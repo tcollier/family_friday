@@ -1,11 +1,9 @@
-require_relative 'base'
-
 module FamilyFriday
   module Cli
     module Action
       # Action that prints out all available commands
-      class Help < Base
-        def perform
+      module Help
+        def self.perform(args:, output: $stdout)
           output.puts "Valid commands are"
           Action.each_description do |command, description|
             output.puts "  * #{command} - #{description}"

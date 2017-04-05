@@ -7,9 +7,7 @@ module FamilyFriday::Cli
     let(:output) { instance_double(IO) }
 
     before do
-      allow(ActionFactory).to receive(:make)
-        .with('foo', %w[bar baz], output: output)
-        .and_return(action)
+      allow(Action).to receive(:lookup).with('foo').and_return(action)
     end
 
     describe '#interpret' do
@@ -25,10 +23,11 @@ module FamilyFriday::Cli
       end
 
       describe 'when an action is configured for the command' do
-        let(:action) { instance_double(Action::Base) }
+        let(:action) { double(:action) }
 
         it 'prints a useful message' do
           expect(action).to receive(:perform)
+            .with(args: %w[bar baz], output: output)
           subject.interpret
         end
       end

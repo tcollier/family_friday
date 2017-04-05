@@ -1,13 +1,11 @@
-require_relative 'base'
-
 require_relative '../../app/grouper'
 
 module FamilyFriday
   module Cli
     module Action
       # Group all of the employee that are in the application data store
-      class GroupEmployees < Base
-        def perform
+      module GroupEmployees
+        def self.perform(args:, output: $stdout)
           employees = FamilyFriday.application.employee_store.all
           if employees.length == 0
             output.puts '<no employees>'

@@ -1,5 +1,3 @@
-require_relative 'base'
-
 require_relative '../validation_error'
 require_relative '../../app/employee'
 
@@ -7,8 +5,8 @@ module FamilyFriday
   module Cli
     module Action
       # Adds a employee to the application data store
-      class AddEmployee < Base
-        def perform
+      module AddEmployee
+        def self.perform(args:, output: $stdout)
           if args.length != 2
             raise ValidationError, 'You must supply a first and last name'
           end

@@ -2,10 +2,6 @@ require_relative '../../../../lib/family_friday/cli/action/add_employee'
 
 module FamilyFriday::Cli
   RSpec.describe Action::AddEmployee do
-    subject do
-      Action::AddEmployee.new(args: args, output: output)
-    end
-
     let(:output) { instance_double(IO, puts: nil) }
 
     describe '#perform' do
@@ -22,12 +18,12 @@ module FamilyFriday::Cli
         )
         expect(FamilyFriday.application.employee_store).to receive(:add)
           .with(expected_employee)
-        subject.perform
+        Action::AddEmployee.perform(args: args, output: output)
       end
 
       it 'prints a success message' do
         expect(output).to receive(:puts).with('Added employee Bob Barker')
-        subject.perform
+        Action::AddEmployee.perform(args: args, output: output)
       end
 
       context 'when there are the wrong number of arguments' do
@@ -36,7 +32,7 @@ module FamilyFriday::Cli
         it 'raises a ValidationError' do
           message = 'You must supply a first and last name'
           expect do
-            subject.perform
+            Action::AddEmployee.perform(args: args, output: output)
           end.to raise_error(ValidationError, message)
         end
       end

@@ -15,10 +15,6 @@ module FamilyFriday::Cli
       end
     end
 
-    subject do
-      Action::Help.new(args: [], output: output)
-    end
-
     let(:output) { instance_double(IO) }
 
     describe '#perform' do
@@ -36,7 +32,7 @@ module FamilyFriday::Cli
           .with(/test1 - test action 1/)
         expect(output).to receive(:puts)
           .with(/test2 - test action 2/)
-        subject.perform
+        Action::Help.perform(args: [], output: output)
       end
     end
   end
