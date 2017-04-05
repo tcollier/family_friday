@@ -10,10 +10,6 @@ module FamilyFriday
         def perform
           raise QuitException
         end
-
-        def self.description
-          'Exit the interpreter'
-        end
       end
     end
   end

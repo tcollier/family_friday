@@ -12,10 +12,6 @@ module FamilyFriday
             output.puts " #{line_no}\t#{history}"
           end
         end
-
-        def self.description
-          'Print the history of commands'
-        end
       end
     end
   end

@@ -27,10 +27,10 @@ module FamilyFriday
       end
 
       # Iterate through each of the registered commands, yielding the command
-      # string and the action class
-      def self.each(&block)
+      # string and the description
+      def self.each_description(&block)
         return unless @config
-        @config.each(&block)
+        @config.each_description(&block)
       end
     end
   end

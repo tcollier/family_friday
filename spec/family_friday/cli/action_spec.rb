@@ -2,14 +2,17 @@ require_relative '../../../lib/family_friday/cli/action'
 
 module FamilyFriday::Cli
   RSpec.describe Action do
-    class TestAction
+    class TestAction1
+    end
+
+    class TestAction2
     end
 
     describe '.commands' do
       it 'returns each configured action' do
         Action.configure do |config|
-          config.add('foo', TestAction1)
-          config.add('bar', TestAction2)
+          config.add('foo', TestAction1, 'test action 1')
+          config.add('bar', TestAction2, 'test action 2')
         end
 
         expect(Action.commands).to eq(%w[foo bar])
@@ -19,30 +22,30 @@ module FamilyFriday::Cli
     describe '.lookup' do
       it 'looks up a configured action' do
         Action.configure do |config|
-          config.add('foo', TestAction)
+          config.add('foo', TestAction1, 'test action 1')
         end
 
-        expect(subject.lookup('foo')).to eq(TestAction)
+        expect(subject.lookup('foo')).to eq(TestAction1)
       end
     end
 
-    describe '.each' do
+    describe '.each_description' do
       it 'iterates through each configured action' do
         iterated = {}
 
         Action.configure do |config|
-          config.add('foo', TestAction1)
-          config.add('bar', TestAction2)
+          config.add('foo', TestAction1, 'test action 1')
+          config.add('bar', TestAction2, 'test action 2')
         end
 
-        Action.each do |key, value|
+        Action.each_description do |key, value|
           iterated[key] = value
         end
         expect(iterated.size).to eq(2)
         expect(iterated).to have_key('foo')
-        expect(iterated['foo']).to eq(TestAction1)
+        expect(iterated['foo']).to eq('test action 1')
         expect(iterated).to have_key('bar')
-        expect(iterated['bar']).to eq(TestAction2)
+        expect(iterated['bar']).to eq('test action 2')
       end
     end
   end

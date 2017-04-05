@@ -24,10 +24,6 @@ module FamilyFriday
             end
           end
         end
-
-        def self.description
-          'Group all employees into randomized groups'
-        end
       end
     end
   end

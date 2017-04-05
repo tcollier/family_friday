@@ -7,13 +7,9 @@ module FamilyFriday
       class Help < Base
         def perform
           output.puts "Valid commands are"
-          Action.each do |command, action_class|
-            output.puts "  * #{command} - #{action_class.description}"
+          Action.each_description do |command, description|
+            output.puts "  * #{command} - #{description}"
           end
-        end
-
-        def self.description
-          'Print this message'
         end
       end
     end

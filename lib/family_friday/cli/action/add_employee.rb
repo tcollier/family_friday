@@ -19,12 +19,8 @@ module FamilyFriday
           )
           FamilyFriday.application.employee_store.add(employee)
           output.puts(
-            "Added employee #{employee.first_name} #{employee.last_name}"          
+            "Added employee #{employee.first_name} #{employee.last_name}"
           )
-        end
-
-        def self.description
-          'Adds a new employee (args: first_name, last_name)'
         end
       end
     end

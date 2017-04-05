@@ -5,7 +5,6 @@ module FamilyFriday
       # overridden in subclasses
       #
       #   * #perform
-      #   * .description
       #
       class Base
         # @param args [Array<String>] the list of arguments for the action.
@@ -17,11 +16,6 @@ module FamilyFriday
 
         # Perform the logic needed to fulfill the command
         def perform
-          super
-        end
-
-        # A brief description of what the action does.
-        def self.description
           super
         end
 

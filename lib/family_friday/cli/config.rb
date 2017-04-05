@@ -1,5 +1,7 @@
 module FamilyFriday
   module Cli
+    ActionConfig = Struct.new(:action_class, :description)
+
     # Manage the configuration for the actions available to the CLI
     class Config
       def initialize
@@ -12,8 +14,8 @@ module FamilyFriday
       #   action, e.g. "help" for the command the will print out help info.
       # @param action_class [Class] the class that will execute the logic for
       #   the given command.
-      def add(command, action_class)
-        mapping[command] = action_class
+      def add(command, action_class, description)
+        mapping[command] = ActionConfig.new(action_class, description)
       end
 
       # @return [Array<String>] the list of all configured actions.
@@ -25,13 +27,15 @@ module FamilyFriday
       # @return [Class] the action class that is registered for the command,
       #   nil if none is registered.
       def lookup(command)
-        mapping[command]
+        mapping[command]&.action_class
       end
 
       # Iterate through each of the registered commands, yielding the command
-      # string and the action class
-      def each(&block)
-        mapping.each(&block)
+      # string and the description
+      def each_description(&block)
+        mapping.each do |command, action_config|
+          yield command, action_config.description
+        end
       end
 
       private

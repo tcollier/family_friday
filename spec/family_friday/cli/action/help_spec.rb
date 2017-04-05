@@ -24,8 +24,8 @@ module FamilyFriday::Cli
     describe '#perform' do
       before do
         FamilyFriday::Cli::Action.configure do |config|
-          config.add('test1', TestAction1)
-          config.add('test2', TestAction2)
+          config.add('test1', TestAction1, 'test action 1')
+          config.add('test2', TestAction2, 'test action 2')
         end
 
         allow(output).to receive(:puts)
@@ -33,9 +33,9 @@ module FamilyFriday::Cli
 
       it 'puts a list of commands to the output stream' do
         expect(output).to receive(:puts)
-          .with(/test1 - Test action 1/)
+          .with(/test1 - test action 1/)
         expect(output).to receive(:puts)
-          .with(/test2 - Test action 2/)
+          .with(/test2 - test action 2/)
         subject.perform
       end
     end

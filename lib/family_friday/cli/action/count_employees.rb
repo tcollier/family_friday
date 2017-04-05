@@ -8,10 +8,6 @@ module FamilyFriday
         def perform
           output.puts FamilyFriday.application.employee_store.size
         end
-
-        def self.description
-          'Count the number of employees'
-        end
       end
     end
   end
