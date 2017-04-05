@@ -12,7 +12,7 @@ module FamilyFriday
   module Cli
     WELCOME_MESSAGE =
       'Welcome the the Family Friday app! Type "help" to list commands'.freeze
-    PROMPT = '> '.freeze
+    PROMPT = 'family-friday> '.freeze
 
     # Begin the prompt, get input, process loop.
     def self.start(output: $stdout)
