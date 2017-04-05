@@ -1,5 +1,5 @@
 module FamilyFriday
-  module Cli
+  module App
     module Action
       # Counts the number of employee in the application data store
       module CountEmployees

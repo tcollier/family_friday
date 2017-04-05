@@ -1,6 +1,6 @@
-require_relative '../../../../lib/family_friday/cli/action/add_employee'
+require_relative '../../../../lib/family_friday/app/action/add_employee'
 
-module FamilyFriday::Cli
+module FamilyFriday::App
   RSpec.describe Action::AddEmployee do
     let(:output) { instance_double(IO, puts: nil) }
 
@@ -12,7 +12,7 @@ module FamilyFriday::Cli
       end
 
       it 'adds the employee to the data store' do
-        expected_employee = FamilyFriday::App::Employee.new(
+        expected_employee = Employee.new(
           first_name: 'Bob',
           last_name: 'Barker'
         )
@@ -33,7 +33,7 @@ module FamilyFriday::Cli
           message = 'You must supply a first and last name'
           expect do
             Action::AddEmployee.perform(args: args, output: output)
-          end.to raise_error(ValidationError, message)
+          end.to raise_error(FamilyFriday::Cli::ValidationError, message)
         end
       end
     end

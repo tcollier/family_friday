@@ -1,6 +1,6 @@
-require_relative '../../../../lib/family_friday/cli/action/count_employees'
+require_relative '../../../../lib/family_friday/app/action/count_employees'
 
-module FamilyFriday::Cli
+module FamilyFriday::App
   RSpec.describe Action::CountEmployees do
     let(:output) { instance_double(IO, puts: nil) }
 

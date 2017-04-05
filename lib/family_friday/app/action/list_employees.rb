@@ -1,5 +1,5 @@
 module FamilyFriday
-  module Cli
+  module App
     module Action
       # List all of the employee in the application data store
       module ListEmployees

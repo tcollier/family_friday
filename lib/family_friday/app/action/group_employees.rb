@@ -1,7 +1,7 @@
-require_relative '../../app/grouper'
+require_relative '../grouper'
 
 module FamilyFriday
-  module Cli
+  module App
     module Action
       # Group all of the employee that are in the application data store
       module GroupEmployees

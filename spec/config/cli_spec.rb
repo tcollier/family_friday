@@ -6,12 +6,12 @@ RSpec.describe 'CLI action configuration' do
 
   it 'configured "add"' do
     expect(FamilyFriday::Cli::Action.lookup('add'))
-      .to eq(FamilyFriday::Cli::Action::AddEmployee)
+      .to eq(FamilyFriday::App::Action::AddEmployee)
   end
 
   it 'configured "groups"' do
     expect(FamilyFriday::Cli::Action.lookup('groups'))
-      .to eq(FamilyFriday::Cli::Action::GroupEmployees)
+      .to eq(FamilyFriday::App::Action::GroupEmployees)
   end
 
   it 'configured "help"' do
@@ -21,7 +21,7 @@ RSpec.describe 'CLI action configuration' do
 
   it 'configured "list"' do
     expect(FamilyFriday::Cli::Action.lookup('list'))
-      .to eq(FamilyFriday::Cli::Action::ListEmployees)
+      .to eq(FamilyFriday::App::Action::ListEmployees)
   end
 
   it 'configured "quit"' do
@@ -31,6 +31,6 @@ RSpec.describe 'CLI action configuration' do
 
   it 'configured "size"' do
     expect(FamilyFriday::Cli::Action.lookup('size'))
-      .to eq(FamilyFriday::Cli::Action::CountEmployees)
+      .to eq(FamilyFriday::App::Action::CountEmployees)
   end
 end

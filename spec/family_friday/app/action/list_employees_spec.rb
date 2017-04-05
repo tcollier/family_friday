@@ -1,14 +1,14 @@
-require_relative '../../../../lib/family_friday/cli/action/list_employees'
+require_relative '../../../../lib/family_friday/app/action/list_employees'
 
-module FamilyFriday::Cli
+module FamilyFriday::App
   RSpec.describe Action::ListEmployees do
     let(:output) { instance_double(IO, puts: nil) }
 
     describe '#perform' do
       let(:employees) do
         [
-          FamilyFriday::App::Employee.new(first_name: 'Bob', last_name: 'Barker'),
-          FamilyFriday::App::Employee.new(first_name: 'Vanna', last_name: 'White')
+          Employee.new(first_name: 'Bob', last_name: 'Barker'),
+          Employee.new(first_name: 'Vanna', last_name: 'White')
         ]
       end
 
