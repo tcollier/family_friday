@@ -1,3 +1,11 @@
+require_relative '../lib/family_friday'
+
+FamilyFriday.configure do |config|
+  config.db_file = 'test.db'
+end
+
+require_relative '../db/create_employees.rb'
+
 RSpec.configure do |config|
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true

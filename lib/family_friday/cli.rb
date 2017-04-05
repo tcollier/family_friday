@@ -1,5 +1,6 @@
 require_relative 'cli/interpreter'
 require_relative 'cli/quit_exception'
+require_relative 'cli/validation_error'
 
 module FamilyFriday
   # Entry point for the Command Line Interface (CLI).
@@ -40,6 +41,8 @@ module FamilyFriday
 
           begin
             interpreter.interpret
+          rescue ValidationError => error
+            output.puts "Error: #{error}"
           rescue QuitException
             break
           end
