@@ -9,6 +9,11 @@ RSpec.describe 'CLI action configuration' do
       .to eq(FamilyFriday::Cli::Action::AddEmployee)
   end
 
+  it 'configured "groups"' do
+    expect(FamilyFriday::Cli::Action.lookup('groups'))
+      .to eq(FamilyFriday::Cli::Action::GroupEmployees)
+  end
+
   it 'configured "help"' do
     expect(FamilyFriday::Cli::Action.lookup('help'))
       .to eq(FamilyFriday::Cli::Action::Help)

@@ -17,7 +17,7 @@ module FamilyFriday
         end
 
         def self.description
-          'List all employee'
+          'List all employees'
         end
       end
     end
