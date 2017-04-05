@@ -14,11 +14,6 @@ RSpec.describe 'CLI action configuration' do
       .to eq(FamilyFriday::Cli::Action::Help)
   end
 
-  it 'configured "echo"' do
-    expect(FamilyFriday::Cli::Action.lookup('echo'))
-      .to eq(FamilyFriday::Cli::Action::Echo)
-  end
-
   it 'configured "list"' do
     expect(FamilyFriday::Cli::Action.lookup('list'))
       .to eq(FamilyFriday::Cli::Action::ListEmployees)
