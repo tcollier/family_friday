@@ -20,10 +20,7 @@ module FamilyFriday
       quit = false
 
       loop do
-        output.print PROMPT
-        output.flush
-
-        line = gets&.chomp
+        line = Readline.readline(PROMPT, true)
 
         if line.nil?
           # When the user presses <CMD>+D, this comes through as nil. In that

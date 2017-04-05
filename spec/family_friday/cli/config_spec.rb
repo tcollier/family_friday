@@ -8,6 +8,15 @@ module FamilyFriday::Cli
     class TestAction2
     end
 
+    describe '.commands' do
+      it 'returns each configured action' do
+        subject.add('foo', TestAction1)
+        subject.add('bar', TestAction2)
+
+        expect(subject.commands).to eq(%w[foo bar])
+      end
+    end
+
     describe '.lookup' do
       it 'looks up a configured action' do
         subject.add('foo', TestAction1)

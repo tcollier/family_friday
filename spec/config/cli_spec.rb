@@ -1,7 +1,7 @@
 RSpec.describe 'CLI action configuration' do
   before do
     # Reconfigure before each test in case another spec overwrote the config.
-    require_relative '../../config/cli_actions'
+    require_relative '../../config/cli'
   end
 
   it 'configured "add"' do

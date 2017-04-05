@@ -16,6 +16,11 @@ module FamilyFriday
         mapping[command] = action_class
       end
 
+      # @return [Array<String>] the list of all configured actions.
+      def commands
+        @mapping.keys
+      end
+
       # @param command [String] the command to find an action class for.
       # @return [Class] the action class that is registered for the command,
       #   nil if none is registered.

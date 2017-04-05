@@ -5,6 +5,17 @@ module FamilyFriday::Cli
     class TestAction
     end
 
+    describe '.commands' do
+      it 'returns each configured action' do
+        Action.configure do |config|
+          config.add('foo', TestAction1)
+          config.add('bar', TestAction2)
+        end
+
+        expect(Action.commands).to eq(%w[foo bar])
+      end
+    end
+
     describe '.lookup' do
       it 'looks up a configured action' do
         Action.configure do |config|

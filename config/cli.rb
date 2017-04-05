@@ -1,3 +1,5 @@
+require 'readline'
+
 require_relative '../lib/family_friday/cli/action'
 require_relative '../lib/family_friday/cli/action/add_employee'
 require_relative '../lib/family_friday/cli/action/count_employees'
@@ -14,3 +16,8 @@ FamilyFriday::Cli::Action.configure do |config|
   config.add('quit', FamilyFriday::Cli::Action::Quit)
   config.add('size', FamilyFriday::Cli::Action::CountEmployees)
 end
+
+comp = proc { |s| FamilyFriday::Cli::Action.commands.grep(/^#{Regexp.escape(s)}/) }
+
+Readline.completion_append_character = " "
+Readline.completion_proc = comp

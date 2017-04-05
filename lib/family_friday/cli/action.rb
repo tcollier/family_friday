@@ -11,6 +11,11 @@ module FamilyFriday
         yield @config
       end
 
+      # @return [Array<String>] the list of all configured actions.
+      def self.commands
+        @config.commands
+      end
+
       # Look up the action class for the given command from the global config
       #
       # @param command [String] the command to find an action class for.
