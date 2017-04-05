@@ -16,6 +16,7 @@ module FamilyFriday
 
     # Begin the prompt, get input, process loop.
     def self.start(output: $stdout)
+      Readline.output = output
       output.puts WELCOME_MESSAGE
       quit = false
 
