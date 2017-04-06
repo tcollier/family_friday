@@ -1,4 +1,4 @@
-require_relative '../../cli/validation_error'
+require_relative '../../../commando/validation_error'
 require_relative '../employee'
 
 module FamilyFriday
@@ -8,7 +8,8 @@ module FamilyFriday
       module AddEmployee
         def self.perform(args:, output: $stdout)
           if args.length != 2
-            raise Cli::ValidationError, 'You must supply a first and last name'
+            raise Commando::ValidationError,
+                  'You must supply a first and last name'
           end
 
           employee = FamilyFriday::App::Employee.new(

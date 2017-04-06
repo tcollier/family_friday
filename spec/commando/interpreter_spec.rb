@@ -1,6 +1,6 @@
-require_relative '../../../lib/family_friday/cli/interpreter'
+require_relative '../../lib/commando/interpreter'
 
-module FamilyFriday::Cli
+module Commando
   RSpec.describe Interpreter do
     subject { Interpreter.new(input: 'foo bar baz', output: output) }
 

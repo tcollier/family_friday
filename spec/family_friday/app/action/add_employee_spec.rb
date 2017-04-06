@@ -33,7 +33,7 @@ module FamilyFriday::App
           message = 'You must supply a first and last name'
           expect do
             Action::AddEmployee.perform(args: args, output: output)
-          end.to raise_error(FamilyFriday::Cli::ValidationError, message)
+          end.to raise_error(Commando::ValidationError, message)
         end
       end
     end

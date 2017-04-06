@@ -1,6 +1,6 @@
-require_relative '../../../../lib/family_friday/cli/action/quit'
+require_relative '../../../lib/commando/action/quit'
 
-module FamilyFriday::Cli
+module Commando
   RSpec.describe Action::Quit do
     describe '#perform' do
       it 'raises a QuitException' do

@@ -1,7 +1,0 @@
-#!/usr/bin/env ruby
-
-require_relative '../config/application'
-require_relative '../config/cli'
-require_relative '../lib/family_friday/cli'
-
-FamilyFriday::Cli.start

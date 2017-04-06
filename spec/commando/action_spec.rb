@@ -1,6 +1,6 @@
-require_relative '../../../lib/family_friday/cli/action'
+require_relative '../../lib/commando/action'
 
-module FamilyFriday::Cli
+module Commando
   RSpec.describe Action do
     class TestAction1
     end

@@ -1,7 +1,7 @@
-require_relative '../../../../lib/family_friday/cli/action'
-require_relative '../../../../lib/family_friday/cli/action/help'
+require_relative '../../../lib/commando/action'
+require_relative '../../../lib/commando/action/help'
 
-module FamilyFriday::Cli
+module Commando
   RSpec.describe Action::Help do
     class TestAction1
       def self.description
@@ -19,7 +19,7 @@ module FamilyFriday::Cli
 
     describe '#perform' do
       before do
-        FamilyFriday::Cli::Action.configure do |config|
+        Commando::Action.configure do |config|
           config.add('test1', TestAction1, 'test action 1')
           config.add('test2', TestAction2, 'test action 2')
         end

@@ -1,16 +1,16 @@
 require 'readline'
 
-require_relative '../lib/family_friday/cli/action'
-require_relative '../lib/family_friday/cli/action/help'
-require_relative '../lib/family_friday/cli/action/history'
-require_relative '../lib/family_friday/cli/action/quit'
+require_relative '../lib/commando/action'
+require_relative '../lib/commando/action/help'
+require_relative '../lib/commando/action/history'
+require_relative '../lib/commando/action/quit'
 
 require_relative '../lib/family_friday/app/action/add_employee'
 require_relative '../lib/family_friday/app/action/count_employees'
 require_relative '../lib/family_friday/app/action/group_employees'
 require_relative '../lib/family_friday/app/action/list_employees'
 
-FamilyFriday::Cli::Action.configure do |config|
+Commando::Action.configure do |config|
   config.add 'add',
              FamilyFriday::App::Action::AddEmployee,
              'Adds a new employee (args: first_name, last_name)'
@@ -20,11 +20,11 @@ FamilyFriday::Cli::Action.configure do |config|
              'Group all employees into randomized groups'
 
   config.add 'help',
-             FamilyFriday::Cli::Action::Help,
+             Commando::Action::Help,
              'Print this message'
 
   config.add 'history',
-             FamilyFriday::Cli::Action::History,
+             Commando::Action::History,
              'Print the history of commands'
 
   config.add 'list',
@@ -32,7 +32,7 @@ FamilyFriday::Cli::Action.configure do |config|
              'List all employees'
 
   config.add 'quit',
-             FamilyFriday::Cli::Action::Quit,
+             Commando::Action::Quit,
              'Exit the program'
 
   config.add 'size',
@@ -41,7 +41,7 @@ FamilyFriday::Cli::Action.configure do |config|
 end
 
 # Configure readline
-comp = proc { |s| FamilyFriday::Cli::Action.commands.grep(/^#{Regexp.escape(s)}/) }
+comp = proc { |s| Commando::Action.commands.grep(/^#{Regexp.escape(s)}/) }
 
 Readline.completion_append_character = " "
 Readline.completion_proc = comp
