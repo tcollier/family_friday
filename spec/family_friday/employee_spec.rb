@@ -1,6 +1,6 @@
-require_relative '../../../lib/family_friday/app/employee'
+require_relative '../../lib/family_friday/employee'
 
-module FamilyFriday::App
+module FamilyFriday
   RSpec.describe Employee do
     describe '#==' do
       context 'when the other object is a different class' do

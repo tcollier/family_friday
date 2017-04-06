@@ -1,6 +1,6 @@
-require_relative '../../../lib/family_friday/app/grouper'
+require_relative '../../lib/family_friday/grouper'
 
-module FamilyFriday::App
+module FamilyFriday
   RSpec.describe Grouper do
     subject { Grouper.new(items: items) }
 

@@ -1,9 +1,9 @@
 require 'sqlite3'
 
-require_relative '../../../lib/family_friday/app/employee'
-require_relative '../../../lib/family_friday/app/employee_store'
+require_relative '../../lib/family_friday/employee'
+require_relative '../../lib/family_friday/employee_store'
 
-module FamilyFriday::App
+module FamilyFriday
   RSpec.describe EmployeeStore do
     subject { EmployeeStore.new(database: database) }
 

@@ -1,6 +1,6 @@
-require_relative '../../../../lib/family_friday/app/action/add_employee'
+require_relative '../../../lib/family_friday/action/add_employee'
 
-module FamilyFriday::App
+module FamilyFriday
   RSpec.describe Action::AddEmployee do
     let(:output) { instance_double(IO, puts: nil) }
 

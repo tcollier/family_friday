@@ -1,6 +1,6 @@
 require 'sqlite3'
 
-require_relative 'app/employee_store'
+require_relative 'employee_store'
 
 module FamilyFriday
   class Application
@@ -9,7 +9,7 @@ module FamilyFriday
     end
 
     def employee_store
-      @employee_store ||= App::EmployeeStore.new(database: database)
+      @employee_store ||= EmployeeStore.new(database: database)
     end
 
     private

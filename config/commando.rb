@@ -5,18 +5,18 @@ require_relative '../lib/commando/action/help'
 require_relative '../lib/commando/action/history'
 require_relative '../lib/commando/action/quit'
 
-require_relative '../lib/family_friday/app/action/add_employee'
-require_relative '../lib/family_friday/app/action/count_employees'
-require_relative '../lib/family_friday/app/action/group_employees'
-require_relative '../lib/family_friday/app/action/list_employees'
+require_relative '../lib/family_friday/action/add_employee'
+require_relative '../lib/family_friday/action/count_employees'
+require_relative '../lib/family_friday/action/group_employees'
+require_relative '../lib/family_friday/action/list_employees'
 
 Commando::Action.configure do |config|
   config.add 'add',
-             FamilyFriday::App::Action::AddEmployee,
+             FamilyFriday::Action::AddEmployee,
              'Adds a new employee (args: first_name, last_name)'
 
   config.add 'groups',
-             FamilyFriday::App::Action::GroupEmployees,
+             FamilyFriday::Action::GroupEmployees,
              'Group all employees into randomized groups'
 
   config.add 'help',
@@ -28,7 +28,7 @@ Commando::Action.configure do |config|
              'Print the history of commands'
 
   config.add 'list',
-             FamilyFriday::App::Action::ListEmployees,
+             FamilyFriday::Action::ListEmployees,
              'List all employees'
 
   config.add 'quit',
@@ -36,7 +36,7 @@ Commando::Action.configure do |config|
              'Exit the program'
 
   config.add 'size',
-             FamilyFriday::App::Action::CountEmployees,
+             FamilyFriday::Action::CountEmployees,
              'Count the number of employees'
 end
 
