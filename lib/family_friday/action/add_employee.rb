@@ -1,4 +1,5 @@
-require_relative '../../commando/validation_error'
+require 'commando/validation_error'
+
 require_relative '../employee'
 
 module FamilyFriday

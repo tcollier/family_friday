@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 
+require 'commando'
+
 require_relative '../config/application'
 require_relative '../config/commando'
-require_relative '../lib/commando'
 
 Commando.start
