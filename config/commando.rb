@@ -9,6 +9,8 @@ Commando.configure do |config|
 
   config.prompt = 'family-friday> '
 
+  config.history_file = '/Users/tomcollier/.ff_history'
+
   config.register 'add',
                   FamilyFriday::Action::AddEmployee,
                   'Adds a new employee (args: first_name, last_name)'
