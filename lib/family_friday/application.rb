@@ -20,4 +20,6 @@ module FamilyFriday
       @database ||= SQLite3::Database.new(config.db_file)
     end
   end
+
+  private_constant :Application
 end

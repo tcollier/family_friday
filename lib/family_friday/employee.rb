@@ -19,4 +19,6 @@ module FamilyFriday
       [first_name, last_name].hash
     end
   end
+
+  private_constant :Employee
 end

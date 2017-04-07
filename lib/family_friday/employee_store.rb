@@ -39,4 +39,6 @@ module FamilyFriday
 
     attr_reader :database
   end
+
+  private_constant :EmployeeStore
 end

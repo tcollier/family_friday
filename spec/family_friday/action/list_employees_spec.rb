@@ -18,8 +18,8 @@ module FamilyFriday
       end
 
       it 'prints out each employee' do
-        expect(output).to receive(:puts).with('Bob Barker').ordered
-        expect(output).to receive(:puts).with('Vanna White').ordered
+        expect(output).to receive(:puts).with('Bob Barker (Bob)').ordered
+        expect(output).to receive(:puts).with('Vanna White (Vanna)').ordered
         Action::ListEmployees.perform(args: [], output: output)
       end
 

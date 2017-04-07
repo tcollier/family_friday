@@ -23,4 +23,6 @@ module FamilyFriday
 
     attr_reader :items
   end
+
+  private_constant :Grouper
 end
