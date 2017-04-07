@@ -1,3 +1,5 @@
+require 'terminal-table'
+
 module FamilyFriday
   module Formatter
     class Groups
@@ -8,13 +10,11 @@ module FamilyFriday
 
       def to_s
         str = "\n"
+
         groups.each.with_index do |employees, index|
-          str << "   Group #{index + 1}\n"
-          str << "-------------\n"
-          employees.each do |employee|
-            str << " #{nick_names[employee]}\n"
-          end
-          str << "\n"
+          group_nick_names = employees.map { |emp| nick_names[emp] }
+          str << format_group("Group #{index + 1}", group_nick_names).to_s
+          str << "\n\n"
         end
 
         str
@@ -23,6 +23,10 @@ module FamilyFriday
       private
 
       attr_reader :groups, :nick_names
+
+      def format_group(name, members)
+        Terminal::Table.new(headings: [name], rows: members.map { |m| [m] })
+      end
     end
   end
 end
