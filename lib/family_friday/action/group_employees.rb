@@ -1,5 +1,6 @@
 require_relative '../grouper'
 require_relative '../nick_name_map'
+require_relative '../formatter/groups'
 
 module FamilyFriday
   module Action
@@ -10,17 +11,11 @@ module FamilyFriday
         if employees.length == 0
           output.puts '<no employees>'
         else
-          map = NickNameMap.new(employees: employees)
+          nick_names = NickNameMap.new(employees: employees)
           groups = Grouper.new(items: employees).groups
-          output.puts
-          groups.each.with_index do |employees, index|
-            output.puts "   Group #{index + 1}"
-            output.puts "-------------"
-            employees.each do |employee|
-              output.puts " #{map[employee]}"
-            end
-            output.puts
-          end
+          formatter =
+            Formatter::Groups.new(groups: groups, nick_names: nick_names)
+          output.puts formatter.to_s
         end
       end
     end
