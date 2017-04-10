@@ -29,11 +29,11 @@ module FamilyFriday
       context 'when there are the wrong number of arguments' do
         let(:args) { Array.new([0, 1, 3, 4].sample) { 'Foo' } }
 
-        it 'raises a ValidationError' do
+        it 'raises an ArguemntError' do
           message = 'You must supply a first and last name'
           expect do
             Action::AddEmployee.perform(args: args, output: output)
-          end.to raise_error(Commando::ValidationError, message)
+          end.to raise_error(ArgumentError, message)
         end
       end
     end

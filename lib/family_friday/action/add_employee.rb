@@ -1,5 +1,3 @@
-require 'commando/validation_error'
-
 require_relative '../employee'
 
 module FamilyFriday
@@ -8,8 +6,7 @@ module FamilyFriday
     module AddEmployee
       def self.perform(args:, output: $stdout)
         if args.length != 2
-          raise Commando::ValidationError,
-                'You must supply a first and last name'
+          raise ArgumentError, 'You must supply a first and last name'
         end
 
         employee = Employee.new(
