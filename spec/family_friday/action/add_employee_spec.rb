@@ -8,7 +8,7 @@ module FamilyFriday
       let(:args) { %w[Bob Barker] }
 
       before do
-        allow(FamilyFriday.application.employee_store).to receive(:add)
+        allow(FamilyFriday.employee_store).to receive(:add)
       end
 
       it 'adds the employee to the data store' do
@@ -16,7 +16,7 @@ module FamilyFriday
           first_name: 'Bob',
           last_name: 'Barker'
         )
-        expect(FamilyFriday.application.employee_store).to receive(:add)
+        expect(FamilyFriday.employee_store).to receive(:add)
           .with(expected_employee)
         Action::AddEmployee.perform(args: args, output: output)
       end

@@ -6,7 +6,7 @@ module FamilyFriday
 
     describe '#perform' do
       before do
-        expect(FamilyFriday.application.employee_store).to receive(:size)
+        expect(FamilyFriday.employee_store).to receive(:size)
           .and_return(31)
       end
 

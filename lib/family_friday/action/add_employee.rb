@@ -13,7 +13,7 @@ module FamilyFriday
           first_name: args[0],
           last_name: args[1]
         )
-        FamilyFriday.application.employee_store.add(employee)
+        FamilyFriday.employee_store.add(employee)
         output.puts(
           "Added employee #{employee.first_name} #{employee.last_name}"
         )

@@ -5,7 +5,7 @@ module FamilyFriday
     # List all of the employee in the application data store
     module ListEmployees
       def self.perform(args:, output: $stdout)
-        employees = FamilyFriday.application.employee_store.all
+        employees = FamilyFriday.employee_store.all
         if employees.length == 0
           output.puts '<no employees>'
         else

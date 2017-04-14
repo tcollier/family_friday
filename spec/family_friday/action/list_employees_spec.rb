@@ -13,7 +13,7 @@ module FamilyFriday
       end
 
       before do
-        allow(FamilyFriday.application.employee_store).to receive(:all)
+        allow(FamilyFriday.employee_store).to receive(:all)
           .and_return(employees)
       end
 
