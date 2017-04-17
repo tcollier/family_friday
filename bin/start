@@ -3,6 +3,33 @@
 require 'commando'
 
 require_relative '../config/application'
-require_relative '../config/commando'
 
-Commando.start
+require_relative '../lib/family_friday/action/add_employee'
+require_relative '../lib/family_friday/action/count_employees'
+require_relative '../lib/family_friday/action/group_employees'
+require_relative '../lib/family_friday/action/list_employees'
+
+Commando.start do |config|
+  config.greeting =
+    'Welcome the the Family Friday app! Type "help" to list commands'
+
+  config.prompt = 'family-friday> '
+
+  config.history_file = '/Users/tomcollier/.ff_history'
+
+  config.register 'add',
+                  FamilyFriday::Action::AddEmployee.new,
+                  'Adds a new employee (args: first_name, last_name)'
+
+  config.register 'groups',
+                  FamilyFriday::Action::GroupEmployees.new,
+                  'Group all employees into randomized groups'
+
+  config.register 'list',
+                  FamilyFriday::Action::ListEmployees.new,
+                  'List all employees'
+
+  config.register 'size',
+                  FamilyFriday::Action::CountEmployees.new,
+                  'Count the number of employees'
+end

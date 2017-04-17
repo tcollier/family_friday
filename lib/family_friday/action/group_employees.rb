@@ -5,8 +5,12 @@ require_relative '../formatter/groups'
 module FamilyFriday
   module Action
     # Group all of the employee that are in the application data store
-    module GroupEmployees
-      def self.perform(args:, output: $stdout)
+    class GroupEmployees
+      def initialize(output: $stdout)
+        @output = output
+      end
+
+      def perform(args:)
         employees = FamilyFriday.employee_store.all
         if employees.length == 0
           output.puts '<no employees>'
@@ -18,6 +22,10 @@ module FamilyFriday
           output.puts formatter.to_s
         end
       end
+
+      private
+
+      attr_reader :output
     end
   end
 end

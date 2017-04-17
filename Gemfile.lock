@@ -28,7 +28,7 @@ GEM
     rspec-support (3.5.0)
     slop (3.6.0)
     sqlite3 (1.3.13)
-    tcollier-commando (0.2.1)
+    tcollier-commando (2.0.0)
     terminal-table (1.7.3)
       unicode-display_width (~> 1.1.1)
     unicode-display_width (1.1.3)

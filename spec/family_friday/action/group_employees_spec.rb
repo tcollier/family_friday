@@ -2,6 +2,8 @@ require_relative '../../../lib/family_friday/action/group_employees'
 
 module FamilyFriday
   RSpec.describe Action::GroupEmployees do
+    subject { Action::GroupEmployees.new(output: output) }
+
     let(:output) { instance_double(IO, puts: nil) }
 
     describe '#perform' do
@@ -15,7 +17,7 @@ module FamilyFriday
 
         it 'prints a useful message' do
           expect(output).to receive(:puts).with('<no employees>')
-          Action::GroupEmployees.perform(args: [], output: output)
+          subject.perform(args: [])
         end
       end
 
@@ -38,7 +40,7 @@ module FamilyFriday
 
         it 'prints a formatted string' do
           expect(output).to receive(:puts).with('groups output')
-          Action::GroupEmployees.perform(args: [], output: output)
+          subject.perform(args: [])
         end
       end
     end

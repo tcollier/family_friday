@@ -2,6 +2,8 @@ require_relative '../../../lib/family_friday/action/list_employees'
 
 module FamilyFriday
   RSpec.describe Action::ListEmployees do
+    subject { Action::ListEmployees.new(output: output) }
+
     let(:output) { instance_double(IO, puts: nil) }
 
     describe '#perform' do
@@ -20,7 +22,7 @@ module FamilyFriday
       it 'prints out each employee' do
         expect(output).to receive(:puts).with('Bob Barker (Bob)').ordered
         expect(output).to receive(:puts).with('Vanna White (Vanna)').ordered
-        Action::ListEmployees.perform(args: [], output: output)
+        subject.perform(args: [])
       end
 
       context 'when there are no employees' do
@@ -30,7 +32,7 @@ module FamilyFriday
 
         it 'prints a useful message' do
           expect(output).to receive(:puts).with('<no employees>')
-          Action::ListEmployees.perform(args: [], output: output)
+          subject.perform(args: [])
         end
       end
     end

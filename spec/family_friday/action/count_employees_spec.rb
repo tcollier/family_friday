@@ -2,6 +2,8 @@ require_relative '../../../lib/family_friday/action/count_employees'
 
 module FamilyFriday
   RSpec.describe Action::CountEmployees do
+    subject { Action::CountEmployees.new(output: output) }
+
     let(:output) { instance_double(IO, puts: nil) }
 
     describe '#perform' do
@@ -12,7 +14,7 @@ module FamilyFriday
 
       it 'prints the number of employees' do
         expect(output).to receive(:puts).with(31)
-        Action::CountEmployees.perform(args: [], output: output)
+        subject.perform(args: [])
       end
     end
   end
