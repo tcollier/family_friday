@@ -1,13 +1,18 @@
 #!/usr/bin/env ruby
 
+require 'sqlite3'
 require 'commando'
 
 require_relative '../config/application'
 
+require_relative '../lib/family_friday/employee_store'
 require_relative '../lib/family_friday/action/add_employee'
 require_relative '../lib/family_friday/action/count_employees'
 require_relative '../lib/family_friday/action/group_employees'
 require_relative '../lib/family_friday/action/list_employees'
+
+employee_store =
+  FamilyFriday::EmployeeStore.new(database: SQLite3::Database.new('app.db'))
 
 Commando.start do |config|
   config.greeting =
@@ -18,18 +23,18 @@ Commando.start do |config|
   config.history_file = '/Users/tomcollier/.ff_history'
 
   config.register 'add',
-                  FamilyFriday::Action::AddEmployee.new,
+                  FamilyFriday::Action::AddEmployee.new(employee_store: employee_store),
                   'Adds a new employee (args: first_name, last_name)'
 
   config.register 'groups',
-                  FamilyFriday::Action::GroupEmployees.new,
+                  FamilyFriday::Action::GroupEmployees.new(employee_store: employee_store),
                   'Group all employees into randomized groups'
 
   config.register 'list',
-                  FamilyFriday::Action::ListEmployees.new,
+                  FamilyFriday::Action::ListEmployees.new(employee_store: employee_store),
                   'List all employees'
 
   config.register 'size',
-                  FamilyFriday::Action::CountEmployees.new,
+                  FamilyFriday::Action::CountEmployees.new(employee_store: employee_store),
                   'Count the number of employees'
 end

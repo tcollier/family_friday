@@ -1,15 +1,18 @@
+require_relative '../../../lib/family_friday/employee_store'
 require_relative '../../../lib/family_friday/action/group_employees'
 
 module FamilyFriday
   RSpec.describe Action::GroupEmployees do
-    subject { Action::GroupEmployees.new(output: output) }
+    subject do
+      Action::GroupEmployees.new(employee_store: employee_store, output: output)
+    end
 
+    let(:employee_store) { instance_double(EmployeeStore) }
     let(:output) { instance_double(IO, puts: nil) }
 
     describe '#perform' do
       before do
-        allow(FamilyFriday.employee_store).to receive(:all)
-          .and_return(employees)
+        allow(employee_store).to receive(:all).and_return(employees)
       end
 
       context 'when there are no employees' do

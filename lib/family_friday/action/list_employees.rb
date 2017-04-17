@@ -4,12 +4,13 @@ module FamilyFriday
   module Action
     # List all of the employee in the application data store
     class ListEmployees
-      def initialize(output: $stdout)
+      def initialize(employee_store:, output: $stdout)
+        @employee_store = employee_store
         @output = output
       end
 
       def perform(args:)
-        employees = FamilyFriday.employee_store.all
+        employees = employee_store.all
         if employees.length == 0
           output.puts '<no employees>'
         else
@@ -23,7 +24,7 @@ module FamilyFriday
 
       private
 
-      attr_reader :output
+      attr_reader :employee_store, :output
     end
   end
 end

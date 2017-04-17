@@ -4,7 +4,8 @@ module FamilyFriday
   module Action
     # Adds a employee to the application data store
     class AddEmployee
-      def initialize(output: $stdout)
+      def initialize(employee_store:, output: $stdout)
+        @employee_store = employee_store
         @output = output
       end
 
@@ -17,7 +18,7 @@ module FamilyFriday
           first_name: args[0],
           last_name: args[1]
         )
-        FamilyFriday.employee_store.add(employee)
+        employee_store.add(employee)
         output.puts(
           "Added employee #{employee.first_name} #{employee.last_name}"
         )
@@ -25,7 +26,7 @@ module FamilyFriday
 
       private
 
-      attr_reader :output
+      attr_reader :employee_store, :output
     end
   end
 end
