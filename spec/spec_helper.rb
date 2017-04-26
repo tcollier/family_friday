@@ -1,5 +1,7 @@
 require_relative '../lib/family_friday'
 
+FileUtils.rm_rf(File.join(File.dirname(__FILE__), '..', 'test.db'))
+
 FamilyFriday.configure do |config|
   config.db_file = 'test.db'
 end

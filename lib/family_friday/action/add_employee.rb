@@ -10,17 +10,18 @@ module FamilyFriday
       end
 
       def perform(args:)
-        if args.length != 2
-          raise ArgumentError, 'You must supply a first and last name'
+        if args.length != 3
+          raise ArgumentError, 'You must supply a first name, last name and team'
         end
 
         employee = Employee.new(
           first_name: args[0],
-          last_name: args[1]
+          last_name: args[1],
+          team: args[2]
         )
         employee_store.add(employee)
         output.puts(
-          "Added employee #{employee.first_name} #{employee.last_name}"
+          "Added employee #{employee.first_name} #{employee.last_name} on #{employee.team}"
         )
       end
 

@@ -13,8 +13,8 @@ module FamilyFriday
     describe '#perform' do
       let(:employees) do
         [
-          Employee.new(first_name: 'Bob', last_name: 'Barker'),
-          Employee.new(first_name: 'Vanna', last_name: 'White')
+          Employee.new(first_name: 'Bob', last_name: 'Barker', team: 'price'),
+          Employee.new(first_name: 'Vanna', last_name: 'White', team: 'wheel')
         ]
       end
 

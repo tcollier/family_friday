@@ -8,8 +8,8 @@ module FamilyFriday
     # @param employee [Employee] the employee to persist in the store
     def add(employee)
       database.execute(
-        'INSERT INTO employees (first_name, last_name) VALUES (?, ?)',
-        [employee.first_name, employee.last_name]
+        'INSERT INTO employees (first_name, last_name, team) VALUES (?, ?, ?)',
+        [employee.first_name, employee.last_name, employee.team]
       )
     end
 
@@ -17,13 +17,13 @@ module FamilyFriday
     #   ordered by first_name, then last_name
     def all
       results = database.execute <<-SQL
-        SELECT first_name, last_name
+        SELECT first_name, last_name, team
         FROM employees
         ORDER BY first_name, last_name
       SQL
 
       results.map do |row|
-        Employee.new(first_name: row[0], last_name: row[1])
+        Employee.new(first_name: row[0], last_name: row[1], team: row[2])
       end
     end
 
